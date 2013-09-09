@@ -15,10 +15,12 @@ import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.VisibleRegion;
 //import android.R;
 import com.example.ejemplogooglemaps.R;
 //import android.app.Activity;
@@ -55,6 +57,8 @@ public class MainActivity extends FragmentActivity implements OnMapClickListener
         Polygon eafitPolygon = sicomMap.addPolygon(new PolygonOptions().add(tLCorner, bLCorner,
         						bRCorner, tRCorner)
         						.strokeColor(Color.RED));
+        VisibleRegion eafitVisibleRegion = new VisibleRegion(bLCorner, bRCorner, tLCorner, 
+        								   tRCorner, new LatLngBounds(bLCorner, tRCorner));
         sicomMap.setMyLocationEnabled(true);                                
         sicomMap.getUiSettings().setZoomControlsEnabled(false);
         sicomMap.getUiSettings().setCompassEnabled(true);
@@ -65,6 +69,7 @@ public class MainActivity extends FragmentActivity implements OnMapClickListener
     }
     
   
+    //se adicionan los nuevos marcadores.
     public void addMainMarkers(){
     	Marker mkUniEafit = sicomMap.addMarker(new MarkerOptions()
         .position(UniEafit)
