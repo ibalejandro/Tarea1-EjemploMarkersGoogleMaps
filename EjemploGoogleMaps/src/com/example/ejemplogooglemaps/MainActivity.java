@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity implements OnMapClickListener
 	private GoogleMap sicomMap;
 	private final LatLng UniEafit = new LatLng(6.200635,-75.578433);  
 											//lat y long found in GoogleMaps
-	private int minZoom =  17;
+	private int minZoom = 17;
 	private final LatLng Biblioteca = new LatLng(6.201176,-75.578438);  
 	private final LatLng Rectoria = new LatLng(6.199432,-75.578919);  
 	private final LatLng Fundadores = new LatLng(6.197963,-75.579557);  
@@ -56,7 +56,7 @@ public class MainActivity extends FragmentActivity implements OnMapClickListener
         sicomMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
         			.getMap();
         sicomMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        sicomMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UniEafit, 17)); //range: 2-21
+        sicomMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UniEafit, minZoom)); //range: 2-21
         																   //continent-street
        /* Polygon eafitPolygon = sicomMap.addPolygon(new PolygonOptions().add(tLCorner, bLCorner,
         						bRCorner, tRCorner)
@@ -158,7 +158,7 @@ public class MainActivity extends FragmentActivity implements OnMapClickListener
     			position.target.longitude)) || position.zoom < minZoom){
     			outOfBoundsVb.vibrate(500); //it vibrates for two secs when going out 
     											//of bounds
-    			sicomMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UniEafit, 17));
+    			sicomMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UniEafit, minZoom));
     			//it returns to UniEafit when going out of bounds
     	}
     	
